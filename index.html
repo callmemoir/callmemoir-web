@@ -62,7 +62,6 @@
       will-change: transform, opacity;
     }
 
-    /* Sparkle besar kanan atas (dekat knop atas TV) */
     .star-big-right {
       top: 21%;
       left: 66.5%;
@@ -72,7 +71,6 @@
       animation-delay: 0s;
     }
 
-    /* Sparkle besar kiri bawah (sisi kiri bingkai TV) */
     .star-big-left {
       top: 63%;
       left: 16.5%;
@@ -82,7 +80,6 @@
       animation-delay: 0.7s;
     }
 
-    /* Sparkle sedang/kecil tambahan agar makin hidup */
     .star-med-top {
       top: 25%;
       left: 73.5%;
@@ -162,6 +159,7 @@
     }
 
     .bio-sheet {
+      position: relative;
       width: 100%;
       max-width: 780px;
       border-radius: 14px;
@@ -174,6 +172,59 @@
       display: block;
       width: 100%;
       height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Hotspot link area Contact us di bagian bawah Page 2 */
+    .contact-link {
+      position: absolute;
+      display: block;
+      border-radius: 6px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(240, 229, 216, 0.25);
+      transition: background-color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      background-color: rgba(240, 229, 216, 0.14);
+    }
+
+    /* Kolom kiri: Instagram, Facebook, Threads */
+    .link-instagram {
+      top: 78.2%;
+      left: 6%;
+      width: 41%;
+      height: 1.5%;
+    }
+
+    .link-facebook {
+      top: 80.1%;
+      left: 6%;
+      width: 41%;
+      height: 1.5%;
+    }
+
+    .link-threads {
+      top: 82.0%;
+      left: 6%;
+      width: 41%;
+      height: 1.5%;
+    }
+
+    /* Kolom kanan: TikTok, Email */
+    .link-tiktok {
+      top: 78.2%;
+      left: 50%;
+      width: 44%;
+      height: 1.5%;
+    }
+
+    .link-email {
+      top: 80.1%;
+      left: 50%;
+      width: 45%;
+      height: 1.5%;
     }
 
     .back-tv-btn {
@@ -216,32 +267,24 @@
     <div class="tv-stage">
       <img src="page-1-welcome.png" alt="CALL ME.MOIR - Memories Not Found" />
 
-      <!-- SVG template bintang empat sudut -->
       <svg style="display:none" aria-hidden="true">
         <defs>
           <path id="four-point-star" d="M50 2 C54 32, 68 46, 98 50 C68 54, 54 68, 50 98 C46 68, 32 54, 2 50 C32 46, 46 32, 50 2 Z" />
         </defs>
       </svg>
 
-      <!-- Sparkle Besar Kanan Atas -->
       <svg class="sparkle-star star-big-right" viewBox="0 0 100 100" aria-hidden="true">
         <use href="#four-point-star" fill="#FFFFFF" />
       </svg>
-
-      <!-- Sparkle Besar Kiri Bawah -->
       <svg class="sparkle-star star-big-left" viewBox="0 0 100 100" aria-hidden="true">
         <use href="#four-point-star" fill="#FFFFFF" />
       </svg>
-
-      <!-- Sparkle Tambahan Bergerak -->
       <svg class="sparkle-star star-med-top" viewBox="0 0 100 100" aria-hidden="true">
         <use href="#four-point-star" fill="#FFFDF9" />
       </svg>
-
       <svg class="sparkle-star star-sm-bottom" viewBox="0 0 100 100" aria-hidden="true">
         <use href="#four-point-star" fill="#FFFDF9" />
       </svg>
-
       <svg class="sparkle-star star-sm-top-left" viewBox="0 0 100 100" aria-hidden="true">
         <use href="#four-point-star" fill="#FFFDF9" />
       </svg>
@@ -260,7 +303,52 @@
   <section id="page-2" aria-label="CALL ME.MOIR Bio & Packages">
     <div class="bio-sheet">
       <img src="page-2-bio.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
+
+      <!-- Link Sosial Media & Email di bagian Contact us -->
+      <a
+        href="https://www.instagram.com/callme.moir/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-link link-instagram"
+        aria-label="Instagram CALL ME.MOIR"
+        title="Buka Instagram @callme.moir"
+      ></a>
+
+      <a
+        href="https://www.facebook.com/callme.moir"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-link link-facebook"
+        aria-label="Facebook CALL ME.MOIR"
+        title="Buka Facebook @callme.moir"
+      ></a>
+
+      <a
+        href="https://www.threads.net/@callme.moir"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-link link-threads"
+        aria-label="Threads CALL ME.MOIR"
+        title="Buka Threads @callme.moir"
+      ></a>
+
+      <a
+        href="https://www.tiktok.com/@callme.moir"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="contact-link link-tiktok"
+        aria-label="TikTok CALL ME.MOIR"
+        title="Buka TikTok @callme.moir"
+      ></a>
+
+      <a
+        href="mailto:callme.moir@gmail.com"
+        class="contact-link link-email"
+        aria-label="Email CALL ME.MOIR"
+        title="Kirim email ke callme.moir@gmail.com"
+      ></a>
     </div>
+
     <button type="button" class="back-tv-btn" id="backTvBtn" aria-label="Kembali ke layar TV">
       ↩ Layar TV
     </button>
