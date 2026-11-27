@@ -162,6 +162,7 @@
       position: relative;
       width: 100%;
       max-width: 780px;
+      min-height: 420px;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
@@ -206,7 +207,7 @@
       border-bottom: 1px solid #F0E5D8;
     }
 
-    /* Kolom kiri pada page-2-bio_2.png */
+    /* Kolom kiri */
     .hotspot-instagram {
       top: 63.15%;
       left: 6.5%;
@@ -228,7 +229,7 @@
       height: 0.85%;
     }
 
-    /* Kolom kanan pada page-2-bio_2.png */
+    /* Kolom kanan */
     .hotspot-tiktok {
       top: 63.15%;
       left: 48.2%;
@@ -289,7 +290,7 @@
   <!-- PAGE 1 -->
   <main id="page-1" aria-label="Welcome Screen">
     <div class="tv-stage">
-      <img src="page-1-welcome.png" alt="CALL ME.MOIR - Memories Not Found" />
+      <img id="welcomeImage" src="images/page-1-welcome.png" alt="CALL ME.MOIR - Memories Not Found" />
 
       <svg style="display:none" aria-hidden="true">
         <defs>
@@ -326,7 +327,7 @@
   <!-- PAGE 2 -->
   <section id="page-2" aria-label="CALL ME.MOIR Bio & Packages">
     <div class="bio-sheet">
-      <img src="page-2-bio_2.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
+      <img id="bioImage" src="images/page-2-bio.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
 
       <!-- Kolom Kiri -->
       <a
@@ -387,6 +388,36 @@
     const page2 = document.getElementById("page-2");
     const enterTvBtn = document.getElementById("enterTvBtn");
     const backTvBtn = document.getElementById("backTvBtn");
+    const bioImage = document.getElementById("bioImage");
+    const welcomeImage = document.getElementById("welcomeImage");
+
+    const bioCandidates = [
+      "images/page-2-bio.png",
+      "images/page-2-bio.jpg",
+      "page-2-bio.png",
+      "images/page-2-bio_3.png",
+      "page-2-bio_3.png"
+    ];
+    let bioIdx = 0;
+    bioImage.addEventListener("error", () => {
+      bioIdx += 1;
+      if (bioIdx < bioCandidates.length) {
+        bioImage.src = bioCandidates[bioIdx];
+      }
+    });
+
+    const welcomeCandidates = [
+      "images/page-1-welcome.png",
+      "images/page-1-welcome.jpg",
+      "page-1-welcome.png"
+    ];
+    let welcomeIdx = 0;
+    welcomeImage.addEventListener("error", () => {
+      welcomeIdx += 1;
+      if (welcomeIdx < welcomeCandidates.length) {
+        welcomeImage.src = welcomeCandidates[welcomeIdx];
+      }
+    });
 
     enterTvBtn.addEventListener("click", () => {
       page2.classList.add("active");
