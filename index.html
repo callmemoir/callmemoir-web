@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>CALL ME.MOIR</title>
   <style>
     * {
@@ -23,25 +23,29 @@
       overflow-x: hidden;
     }
 
-    /* PAGE 1: Layar TV Interaktif + Semua Sparkle Bergerak */
+    /* PAGE 1: Layar TV Interaktif Full-Screen (Landscape & Portrait) */
     #page-1 {
+      position: relative;
       min-height: 100vh;
+      min-height: 100dvh;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 14px;
-      background-color: #F4EBE2;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #d7dadf 0%, #eae3d8 52%, #efe0cc 100%);
     }
 
     .tv-stage {
       position: relative;
       width: 100%;
-      max-width: 1020px;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-      background-color: #F4EBE2;
+      max-width: 1120px;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+      background: transparent;
+      transition: transform 0.3s ease;
     }
 
     .tv-stage img {
@@ -50,6 +54,21 @@
       height: auto;
       user-select: none;
       -webkit-user-drag: none;
+      -webkit-mask-image: radial-gradient(ellipse 96% 94% at 50% 50%, #000 78%, transparent 100%);
+      mask-image: radial-gradient(ellipse 96% 94% at 50% 50%, #000 78%, transparent 100%);
+    }
+
+    /* Penyesuaian khusus mode Portrait (HP / Tablet vertikal) agar TV lebih besar & menyatu */
+    @media (orientation: portrait) {
+      #page-1 {
+        background: linear-gradient(160deg, #d8dbe0 0%, #ebe4d9 48%, #f0e1cd 100%);
+      }
+
+      .tv-stage {
+        width: 118%;
+        max-width: none;
+        transform: translateX(1.2%);
+      }
     }
 
     /* Semua sparkle (besar & kecil) aktif bergerak */
@@ -60,6 +79,7 @@
       filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95))
               drop-shadow(0 0 22px rgba(255, 240, 210, 0.8));
       will-change: transform, opacity;
+      z-index: 4;
     }
 
     .star-big-right {
@@ -107,6 +127,47 @@
       animation-delay: 0.5s;
     }
 
+    /* Area klik tepat di layar TV halaman 1 */
+    .tv-screen-trigger {
+      position: absolute;
+      z-index: 6;
+      top: 23%;
+      left: 24.2%;
+      width: 47.8%;
+      height: 61.5%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 18px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Petunjuk halus di bagian bawah layar Page 1 */
+    .tap-hint {
+      position: absolute;
+      bottom: clamp(22px, 4.5vh, 42px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      color: rgba(114, 48, 42, 0.78);
+      font-family: Georgia, serif;
+      font-size: clamp(11px, 1.4vw, 13px);
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      pointer-events: none;
+      white-space: nowrap;
+      animation: hintPulse 2.4s infinite ease-in-out;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% {
+        opacity: 0.45;
+      }
+      50% {
+        opacity: 0.95;
+      }
+    }
+
     @keyframes sparkleBigMove {
       0%, 100% {
         opacity: 0.15;
@@ -129,27 +190,13 @@
       }
     }
 
-    /* Area klik tepat di layar TV halaman 1 */
-    .tv-screen-trigger {
-      position: absolute;
-      top: 23%;
-      left: 24.2%;
-      width: 47.8%;
-      height: 61.5%;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      border-radius: 18px;
-      -webkit-tap-highlight-color: transparent;
-    }
-
     /* PAGE 2: Halaman Utama / Bio */
     #page-2 {
       display: none;
       width: 100%;
       flex-direction: column;
       align-items: center;
-      padding: 20px 14px 56px;
+      padding: 0;
       background-color: #F4EBE2;
       animation: fadeEnter 0.55s ease forwards;
     }
@@ -161,11 +208,11 @@
     .bio-sheet {
       position: relative;
       width: 100%;
-      max-width: 780px;
+      max-width: 820px;
       min-height: 420px;
-      border-radius: 14px;
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      box-shadow: none;
       background-color: #F4EBE2;
     }
 
@@ -330,6 +377,8 @@
         title="Klik layar TV untuk masuk"
       ></button>
     </div>
+
+    <div class="tap-hint" aria-hidden="true">Tap the TV screen to enter</div>
   </main>
 
   <!-- PAGE 2 -->
