@@ -176,64 +176,71 @@
       -webkit-user-drag: none;
     }
 
-    /* Tombol link dengan panah di depan tulisan */
-    .contact-pill {
+    /* Area klik tepat di atas tulisan kontak yang sudah ada di gambar */
+    .contact-hotspot {
       position: absolute;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 4px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background-color: rgba(240, 229, 216, 0.18);
-      border: 1px solid rgba(240, 229, 216, 0.55);
-      color: #F0E5D8;
-      font-family: Georgia, serif;
-      font-size: clamp(8.5px, 1.2vw, 11px);
-      line-height: 1.2;
+      justify-content: flex-end;
+      padding-right: 4px;
+      border-bottom: 1px dashed rgba(240, 229, 216, 0.55);
+      border-radius: 3px;
       text-decoration: none;
-      white-space: nowrap;
       cursor: pointer;
-      -webkit-tap-highlight-color: rgba(240, 229, 216, 0.3);
-      transition: background-color 0.2s ease, transform 0.2s ease;
+      -webkit-tap-highlight-color: rgba(240, 229, 216, 0.25);
+      transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
-    .contact-pill::before {
+    .contact-hotspot::after {
       content: "↗";
-      font-size: 0.9em;
-      opacity: 0.95;
+      color: #F0E5D8;
+      font-size: clamp(9px, 1.3vw, 12px);
+      line-height: 1;
+      opacity: 0.85;
+      margin-left: 4px;
     }
 
-    .contact-pill:hover,
-    .contact-pill:active {
-      background-color: rgba(240, 229, 216, 0.34);
-      transform: translateY(-1px);
+    .contact-hotspot:hover,
+    .contact-hotspot:active {
+      background-color: rgba(240, 229, 216, 0.14);
+      border-bottom: 1px solid #F0E5D8;
     }
 
-    /* Kolom kiri: tepat di depan Instagram, Facebook, Threads */
-    .pill-instagram {
-      top: 78.9%;
+    /* Kolom kiri: sejajar dengan tulisan di gambar */
+    .hotspot-instagram {
+      top: 79.35%;
       left: 5.5%;
+      width: 39.5%;
+      height: 1.45%;
     }
 
-    .pill-facebook {
-      top: 80.55%;
+    .hotspot-facebook {
+      top: 81.15%;
       left: 5.5%;
+      width: 39.5%;
+      height: 1.45%;
     }
 
-    .pill-threads {
-      top: 82.2%;
+    .hotspot-threads {
+      top: 82.95%;
       left: 5.5%;
+      width: 39.5%;
+      height: 1.45%;
     }
 
-    /* Kolom kanan: tepat di depan TikTok, Email */
-    .pill-tiktok {
-      top: 78.9%;
+    /* Kolom kanan: sejajar dengan tulisan di gambar */
+    .hotspot-tiktok {
+      top: 79.35%;
       left: 50.5%;
+      width: 41.5%;
+      height: 1.45%;
     }
 
-    .pill-email {
-      top: 80.55%;
+    .hotspot-email {
+      top: 81.15%;
       left: 50.5%;
+      width: 44.5%;
+      height: 1.45%;
     }
 
     /* Tombol kembali bertuliskan Welcome */
@@ -314,39 +321,44 @@
     <div class="bio-sheet">
       <img src="page-2-bio.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
 
-      <!-- Link Sosial Media & Email (panah otomatis di depan tulisan) -->
+      <!-- Hotspot langsung di atas tulisan yang sudah ada di gambar -->
       <a
         href="https://www.instagram.com/callme.moir/"
         target="_blank"
         rel="noopener noreferrer"
-        class="contact-pill pill-instagram"
-      >Instagram</a>
+        class="contact-hotspot hotspot-instagram"
+        aria-label="Buka Instagram @callme.moir"
+      ></a>
 
       <a
         href="https://www.facebook.com/callme.moir"
         target="_blank"
         rel="noopener noreferrer"
-        class="contact-pill pill-facebook"
-      >Facebook</a>
+        class="contact-hotspot hotspot-facebook"
+        aria-label="Buka Facebook @callme.moir"
+      ></a>
 
       <a
         href="https://www.threads.net/@callme.moir"
         target="_blank"
         rel="noopener noreferrer"
-        class="contact-pill pill-threads"
-      >Threads</a>
+        class="contact-hotspot hotspot-threads"
+        aria-label="Buka Threads @callme.moir"
+      ></a>
 
       <a
         href="https://www.tiktok.com/@callme.moir"
         target="_blank"
         rel="noopener noreferrer"
-        class="contact-pill pill-tiktok"
-      >TikTok</a>
+        class="contact-hotspot hotspot-tiktok"
+        aria-label="Buka TikTok @callme.moir"
+      ></a>
 
       <a
         href="mailto:callme.moir@gmail.com"
-        class="contact-pill pill-email"
-      >Email</a>
+        class="contact-hotspot hotspot-email"
+        aria-label="Kirim email ke callme.moir@gmail.com"
+      ></a>
     </div>
 
     <button type="button" class="back-tv-btn" id="backTvBtn" aria-label="Kembali ke halaman Welcome">
