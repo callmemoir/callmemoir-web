@@ -23,7 +23,7 @@
       overflow-x: hidden;
     }
 
-    /* PAGE 1: Layar TV Interaktif + Sparkle Baru */
+    /* PAGE 1: Layar TV Interaktif + Semua Sparkle Bergerak */
     #page-1 {
       min-height: 100vh;
       width: 100%;
@@ -52,44 +52,83 @@
       -webkit-user-drag: none;
     }
 
-    /* Sparkle baru: lembut, tidak menimpa teks utama */
-    .sparkle {
+    /* Semua sparkle (besar & kecil) aktif bergerak */
+    .sparkle-star {
       position: absolute;
       pointer-events: none;
-      color: #FFFDF9;
-      text-shadow: 0 0 10px rgba(255, 250, 240, 0.9), 0 0 20px rgba(255, 238, 210, 0.65);
-      animation: softBlink 2.6s infinite ease-in-out;
+      transform-origin: center center;
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.95))
+              drop-shadow(0 0 22px rgba(255, 240, 210, 0.8));
+      will-change: transform, opacity;
     }
 
-    .sparkle-a {
-      top: 19.5%;
-      left: 72.2%;
-      font-size: clamp(16px, 2.2vw, 28px);
+    /* Sparkle besar kanan atas (dekat knop atas TV) */
+    .star-big-right {
+      top: 21%;
+      left: 66.5%;
+      width: clamp(36px, 5.4vw, 66px);
+      height: clamp(36px, 5.4vw, 66px);
+      animation: sparkleBigMove 2.2s infinite ease-in-out;
       animation-delay: 0s;
     }
 
-    .sparkle-b {
-      top: 78%;
-      left: 22.8%;
-      font-size: clamp(14px, 1.9vw, 24px);
-      animation-delay: 0.9s;
+    /* Sparkle besar kiri bawah (sisi kiri bingkai TV) */
+    .star-big-left {
+      top: 63%;
+      left: 16.5%;
+      width: clamp(32px, 4.8vw, 58px);
+      height: clamp(32px, 4.8vw, 58px);
+      animation: sparkleBigMove 2.4s infinite ease-in-out;
+      animation-delay: 0.7s;
     }
 
-    .sparkle-c {
-      top: 14%;
-      left: 26.5%;
-      font-size: clamp(12px, 1.5vw, 18px);
-      animation-delay: 1.6s;
+    /* Sparkle sedang/kecil tambahan agar makin hidup */
+    .star-med-top {
+      top: 25%;
+      left: 73.5%;
+      width: clamp(20px, 3vw, 36px);
+      height: clamp(20px, 3vw, 36px);
+      animation: sparkleSmallMove 1.7s infinite ease-in-out;
+      animation-delay: 0.35s;
     }
 
-    @keyframes softBlink {
+    .star-sm-bottom {
+      top: 57%;
+      left: 24.5%;
+      width: clamp(16px, 2.4vw, 28px);
+      height: clamp(16px, 2.4vw, 28px);
+      animation: sparkleSmallMove 1.9s infinite ease-in-out;
+      animation-delay: 1.1s;
+    }
+
+    .star-sm-top-left {
+      top: 19%;
+      left: 23.5%;
+      width: clamp(16px, 2.3vw, 26px);
+      height: clamp(16px, 2.3vw, 26px);
+      animation: sparkleSmallMove 2.1s infinite ease-in-out;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes sparkleBigMove {
       0%, 100% {
-        opacity: 0.08;
-        transform: scale(0.75) rotate(0deg);
+        opacity: 0.15;
+        transform: scale(0.65) rotate(0deg);
       }
       50% {
-        opacity: 0.85;
-        transform: scale(1.12) rotate(10deg);
+        opacity: 1;
+        transform: scale(1.28) rotate(22deg);
+      }
+    }
+
+    @keyframes sparkleSmallMove {
+      0%, 100% {
+        opacity: 0.1;
+        transform: scale(0.6) rotate(0deg);
+      }
+      50% {
+        opacity: 0.95;
+        transform: scale(1.22) rotate(-18deg);
       }
     }
 
@@ -177,10 +216,35 @@
     <div class="tv-stage">
       <img src="page-1-welcome.png" alt="CALL ME.MOIR - Memories Not Found" />
 
-      <!-- Sparkle baru berkedip lembut -->
-      <span class="sparkle sparkle-a" aria-hidden="true">✦</span>
-      <span class="sparkle sparkle-b" aria-hidden="true">✦</span>
-      <span class="sparkle sparkle-c" aria-hidden="true">✦</span>
+      <!-- SVG template bintang empat sudut -->
+      <svg style="display:none" aria-hidden="true">
+        <defs>
+          <path id="four-point-star" d="M50 2 C54 32, 68 46, 98 50 C68 54, 54 68, 50 98 C46 68, 32 54, 2 50 C32 46, 46 32, 50 2 Z" />
+        </defs>
+      </svg>
+
+      <!-- Sparkle Besar Kanan Atas -->
+      <svg class="sparkle-star star-big-right" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#four-point-star" fill="#FFFFFF" />
+      </svg>
+
+      <!-- Sparkle Besar Kiri Bawah -->
+      <svg class="sparkle-star star-big-left" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#four-point-star" fill="#FFFFFF" />
+      </svg>
+
+      <!-- Sparkle Tambahan Bergerak -->
+      <svg class="sparkle-star star-med-top" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#four-point-star" fill="#FFFDF9" />
+      </svg>
+
+      <svg class="sparkle-star star-sm-bottom" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#four-point-star" fill="#FFFDF9" />
+      </svg>
+
+      <svg class="sparkle-star star-sm-top-left" viewBox="0 0 100 100" aria-hidden="true">
+        <use href="#four-point-star" fill="#FFFDF9" />
+      </svg>
 
       <button
         type="button"
