@@ -176,20 +176,20 @@
       -webkit-user-drag: none;
     }
 
-    /* Tombol link rapi & jelas bahwa bisa ditekan ke aplikasi */
+    /* Tombol link dengan panah di depan tulisan */
     .contact-pill {
       position: absolute;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 999px;
-      background-color: rgba(240, 229, 216, 0.16);
-      border: 1px solid rgba(240, 229, 216, 0.45);
+      background-color: rgba(240, 229, 216, 0.18);
+      border: 1px solid rgba(240, 229, 216, 0.55);
       color: #F0E5D8;
       font-family: Georgia, serif;
-      font-size: clamp(9px, 1.3vw, 12px);
-      line-height: 1.25;
+      font-size: clamp(8.5px, 1.2vw, 11px);
+      line-height: 1.2;
       text-decoration: none;
       white-space: nowrap;
       cursor: pointer;
@@ -197,7 +197,7 @@
       transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
-    .contact-pill::after {
+    .contact-pill::before {
       content: "↗";
       font-size: 0.9em;
       opacity: 0.95;
@@ -205,13 +205,13 @@
 
     .contact-pill:hover,
     .contact-pill:active {
-      background-color: rgba(240, 229, 216, 0.32);
+      background-color: rgba(240, 229, 216, 0.34);
       transform: translateY(-1px);
     }
 
-    /* Kolom kiri */
+    /* Kolom kiri: tepat di depan Instagram, Facebook, Threads */
     .pill-instagram {
-      top: 78.65%;
+      top: 78.9%;
       left: 5.5%;
     }
 
@@ -221,13 +221,13 @@
     }
 
     .pill-threads {
-      top: 82.45%;
+      top: 82.2%;
       left: 5.5%;
     }
 
-    /* Kolom kanan */
+    /* Kolom kanan: tepat di depan TikTok, Email */
     .pill-tiktok {
-      top: 78.65%;
+      top: 78.9%;
       left: 50.5%;
     }
 
@@ -314,39 +314,39 @@
     <div class="bio-sheet">
       <img src="page-2-bio.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
 
-      <!-- Tombol Link Sosial Media & Email -->
+      <!-- Link Sosial Media & Email (panah otomatis di depan tulisan) -->
       <a
         href="https://www.instagram.com/callme.moir/"
         target="_blank"
         rel="noopener noreferrer"
         class="contact-pill pill-instagram"
-      >Instagram ↗</a>
+      >Instagram</a>
 
       <a
         href="https://www.facebook.com/callme.moir"
         target="_blank"
         rel="noopener noreferrer"
         class="contact-pill pill-facebook"
-      >Facebook ↗</a>
+      >Facebook</a>
 
       <a
         href="https://www.threads.net/@callme.moir"
         target="_blank"
         rel="noopener noreferrer"
         class="contact-pill pill-threads"
-      >Threads ↗</a>
+      >Threads</a>
 
       <a
         href="https://www.tiktok.com/@callme.moir"
         target="_blank"
         rel="noopener noreferrer"
         class="contact-pill pill-tiktok"
-      >TikTok ↗</a>
+      >TikTok</a>
 
       <a
         href="mailto:callme.moir@gmail.com"
         class="contact-pill pill-email"
-      >Email ↗</a>
+      >Email</a>
     </div>
 
     <button type="button" class="back-tv-btn" id="backTvBtn" aria-label="Kembali ke halaman Welcome">
