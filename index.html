@@ -177,78 +177,59 @@
       -webkit-user-drag: none;
     }
 
-    /* Area klik tepat di atas tulisan kontak */
+    /* Hotspot transparan murni tanpa garis/ikon penanda */
     .contact-hotspot {
       position: absolute;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 2px;
-      border-bottom: 1px dashed rgba(240, 229, 216, 0.65);
-      border-radius: 3px;
+      display: block;
+      background: transparent;
+      border: none;
       text-decoration: none;
       cursor: pointer;
-      -webkit-tap-highlight-color: rgba(240, 229, 216, 0.25);
-      transition: background-color 0.2s ease, border-color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .contact-hotspot::after {
-      content: "↗";
-      color: #F0E5D8;
-      font-size: clamp(9px, 1.3vw, 12px);
-      line-height: 1;
-      opacity: 0.9;
-      margin-left: 4px;
-    }
-
-    .contact-hotspot:hover,
-    .contact-hotspot:active {
-      background-color: rgba(240, 229, 216, 0.15);
-      border-bottom: 1px solid #F0E5D8;
-    }
-
-    /* Kolom kiri */
+    /* Kolom kiri: INSTAGRAM, FACEBOOK, THREADS */
     .hotspot-instagram {
-      top: 63.15%;
+      top: 69.25%;
       left: 6.5%;
-      width: 34.5%;
-      height: 0.85%;
+      width: 37%;
+      height: 1.05%;
     }
 
     .hotspot-facebook {
-      top: 64.15%;
+      top: 70.35%;
       left: 6.5%;
-      width: 34.5%;
-      height: 0.85%;
+      width: 37%;
+      height: 1.05%;
     }
 
     .hotspot-threads {
-      top: 65.15%;
+      top: 71.45%;
       left: 6.5%;
-      width: 34.5%;
-      height: 0.85%;
+      width: 37%;
+      height: 1.05%;
     }
 
-    /* Kolom kanan */
+    /* Kolom kanan: TIKTOK, EMAIL, WA */
     .hotspot-tiktok {
-      top: 63.15%;
-      left: 48.2%;
-      width: 32%;
-      height: 0.85%;
+      top: 69.25%;
+      left: 48%;
+      width: 34%;
+      height: 1.05%;
     }
 
     .hotspot-email {
-      top: 64.15%;
-      left: 48.2%;
-      width: 44%;
-      height: 0.85%;
+      top: 70.35%;
+      left: 48%;
+      width: 45%;
+      height: 1.05%;
     }
 
     .hotspot-wa {
-      top: 65.15%;
-      left: 48.2%;
-      width: 34%;
-      height: 0.85%;
+      top: 71.45%;
+      left: 48%;
+      width: 36%;
+      height: 1.05%;
     }
 
     /* Tombol kembali bertuliskan Welcome */
@@ -395,8 +376,8 @@
       "images/page-2-bio.png",
       "images/page-2-bio.jpg",
       "page-2-bio.png",
-      "images/page-2-bio_3.png",
-      "page-2-bio_3.png"
+      "images/page-2-bio_2.png",
+      "page-2-bio_2.png"
     ];
     let bioIdx = 0;
     bioImage.addEventListener("error", () => {
