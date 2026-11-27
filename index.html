@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CALL ME.MOIR</title>
   <style>
     * {
@@ -11,41 +11,180 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: #F4EBE2;
       color: #F0E5D8;
       font-family: Georgia, serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 24px 16px;
-      gap: 24px;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .page-frame {
+    /* PAGE 1: Layar TV Interaktif */
+    #page-1 {
+      min-height: 100vh;
       width: 100%;
-      max-width: 960px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px;
       background-color: #F4EBE2;
     }
 
-    .page-frame img {
+    .tv-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1020px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      background-color: #F4EBE2;
+    }
+
+    .tv-stage img {
+      display: block;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    /* Area klik tepat di layar TV */
+    .tv-screen-trigger {
+      position: absolute;
+      top: 23%;
+      left: 24.2%;
+      width: 47.8%;
+      height: 61.5%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 18px;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tv-screen-trigger:hover,
+    .tv-screen-trigger:focus-visible {
+      background-color: rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 0 28px rgba(255, 255, 255, 0.35);
+      outline: none;
+    }
+
+    .tv-screen-trigger:active {
+      transform: scale(0.992);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* PAGE 2: Halaman Utama / Bio */
+    #page-2 {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 14px 56px;
+      background-color: #F4EBE2;
+      animation: fadeEnter 0.55s ease forwards;
+    }
+
+    #page-2.active {
+      display: flex;
+    }
+
+    .bio-sheet {
+      width: 100%;
+      max-width: 780px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      background-color: #F4EBE2;
+    }
+
+    .bio-sheet img {
       display: block;
       width: 100%;
       height: auto;
     }
+
+    .back-tv-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 30;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 229, 216, 0.45);
+      background-color: rgba(74, 24, 22, 0.92);
+      color: #F0E5D8;
+      font-family: Georgia, serif;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .back-tv-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeEnter {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
-  <section class="page-frame">
-    <img src="images/page-1-welcome.png" alt="CALL ME.MOIR - Welcome">
+  <!-- PAGE 1 -->
+  <main id="page-1" aria-label="Welcome Screen">
+    <div class="tv-stage">
+      <img src="page-1-welcome.png" alt="CALL ME.MOIR - Memories Not Found" />
+      <button
+        type="button"
+        class="tv-screen-trigger"
+        id="enterTvBtn"
+        aria-label="Masuk ke halaman utama CALL ME.MOIR"
+        title="Klik layar TV untuk masuk"
+      ></button>
+    </div>
+  </main>
+
+  <!-- PAGE 2 -->
+  <section id="page-2" aria-label="CALL ME.MOIR Bio & Packages">
+    <div class="bio-sheet">
+      <img src="page-2-bio.png" alt="CALL ME.MOIR - Audio Video Guestbook Bio" />
+    </div>
+    <button type="button" class="back-tv-btn" id="backTvBtn" aria-label="Kembali ke layar TV">
+      ↩ Layar TV
+    </button>
   </section>
 
-  <section class="page-frame">
-    <img src="images/page-2-bio.png" alt="CALL ME.MOIR - Bio">
-  </section>
+  <script>
+    const page1 = document.getElementById("page-1");
+    const page2 = document.getElementById("page-2");
+    const enterTvBtn = document.getElementById("enterTvBtn");
+    const backTvBtn = document.getElementById("backTvBtn");
+
+    enterTvBtn.addEventListener("click", () => {
+      page2.classList.add("active");
+      page1.style.display = "none";
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+
+    backTvBtn.addEventListener("click", () => {
+      page1.style.display = "flex";
+      page2.classList.remove("active");
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+  </script>
 </body>
 </html>
